@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Catálogo de Implementos</title>
+        <style>
+            .navbar {
+                background-color: #000;
+                color: #fff;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .navbar a {
+                color: #fff;
+                margin-right: 10px;
+            }
+            .navbar a:last-child {
+                color: #f00;
+            }
+            .flex-container {
+                display: flex;
+                flex-wrap: nowrap; /* Cambiado a nowrap para organizar los elementos horizontalmente */
+                justify-content: space-around;
+                width: 90%; /* Ancho del contenedor como porcentaje de la pantalla */
+                margin: 0 auto; /* Márgenes automáticos para centrar el contenedor */
+                overflow-x: auto; /* Agregado para permitir el desplazamiento horizontal */
+            }
+            .implemento {
+                border: 1px solid #000;
+                padding: 20px;
+                width: 200px; /* Tamaño específico de las cajas */
+                height: 400px; /* Tamaño específico de las cajas */
+                overflow-wrap: break-word; /* Hace que el texto se pliegue */
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <div>
+                <a href="/"><img src="logo.png" alt="Logo" /></a>
+            </div>
+            <div>
+                <a href="/">Inicio</a>
+                <a href="/promociones">Promociones</a>
+                <a href="/vestimentas">Vestimentas</a>
+                <a href="/implementos">Implementos</a>
+                <a href="/suplementos">Suplementos</a>
+                <a href="/cuenta">Mi Cuenta</a>
+                <a href="/carrito">Carrito</a>
+            </div>
+        </div>
+        <h1>Catálogo de Implementos</h1>
+        <div th:each="i : ${#numbers.sequence(0, implementos.size()-1, 5)}">
+            <div class="flex-container">
+                <div class="implemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < implementos.size()}">
+                    <h2 th:text="${implementos[j].nombre}"></h2>
+                    <p th:text="${implementos[j].descripcion}"></p>
+                    <p>Precio: <span th:text="${implementos[j].precio}"></span></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
