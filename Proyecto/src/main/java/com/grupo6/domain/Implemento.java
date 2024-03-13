@@ -32,13 +32,17 @@ public class Implemento implements Serializable {
 
     @Column(name = "Precio")
     private double precio;
-
+    
+    @Column(name = "ImagenURL")
+    private String imagenUrl;
+    
     public Implemento() {
     }
 
-    public Implemento(String nombre, String descripcion, double precio) {
+    public Implemento(String nombre, String descripcion, double precio, String imagenUrl) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.imagenUrl = imagenUrl;
     }
 }

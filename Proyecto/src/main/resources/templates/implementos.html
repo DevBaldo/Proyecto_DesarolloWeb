@@ -7,6 +7,40 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <head>
         <title>Catálogo de Implementos</title>
         <style>
+            /* Estilos de la barra lateral */
+            .sidebar {
+                width: 200px;
+                height: calc(100vh - 46px);
+                position: fixed;
+                left: 0;
+                top: 46px;
+                background-color: #f0f0f0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .sidebar h2 {
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .sidebar ul li a {
+                display: block;
+                color: #000;
+                text-decoration: none;
+                padding: 5px 0;
+            }
+            .sidebar ul li a:hover {
+                color: #666;
+            }
+            .sidebar ul li a.implementos {
+                color: red;
+            }
+            .sidebar ul li ul {
+                margin-left: 20px; /* Desplaza los submenús a la derecha */
+            }
+            /* Estilos existentes */
             .navbar {
                 background-color: #000;
                 color: #fff;
@@ -37,9 +71,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 overflow-wrap: break-word; /* Hace que el texto se pliegue */
                 margin-bottom: 10px;
             }
+            .implemento img {
+                width: 100%; /* Ancho de la imagen */
+                height: auto; /* Altura automática para mantener las proporciones de la imagen */
+            }
         </style>
     </head>
     <body>
+        <!-- Barra superior -->
         <div class="navbar">
             <div>
                 <a href="/"><img src="logo.png" alt="Logo" /></a>
@@ -54,13 +93,46 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <a href="/carrito">Carrito</a>
             </div>
         </div>
-        <h1>Catálogo de Implementos</h1>
-        <div th:each="i : ${#numbers.sequence(0, implementos.size()-1, 5)}">
-            <div class="flex-container">
-                <div class="implemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < implementos.size()}">
-                    <h2 th:text="${implementos[j].nombre}"></h2>
-                    <p th:text="${implementos[j].descripcion}"></p>
-                    <p>Precio: <span th:text="${implementos[j].precio}"></span></p>
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <h2>Categorías</h2>
+            <ul>
+                <li>
+                    <a href="#">Promociones</a>
+                    <ul>
+                        <!-- Agrega los submenús de Promociones aquí -->
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="implementos">Implementos</a>
+                    <ul>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#">Cinturón de Cuero</a></li>
+                        <li><a href="#">Cintoron de Neopreno</a></li>
+                        <li><a href="#">Guantes para Hombre</a></li>
+                        <li><a href="#">Guantes para Mujer</a></li>
+                        <li><a href="#">Straps</a></li>
+                        <li><a href="#">Muñequeras</a></li>
+                        <li><a href="#">Coderas</a></li>
+                        <li><a href="#">Rodilleras</a></li>
+                        <li><a href="#">Calleras</a></li>
+                        <li><a href="#">Bolsos</a></li>
+                    </ul>
+                </li>
+                <!-- Agrega más categorías aquí -->
+            </ul>
+        </div>
+        <!-- Contenido principal -->
+        <div style="margin-left: 220px;">
+            <h1>Catálogo de Implementos</h1>
+            <div th:each="i : ${#numbers.sequence(0, implementos.size()-1, 5)}">
+                <div class="flex-container">
+                    <div class="implemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < implementos.size()}">
+                        <img th:src="${implementos[j].imagenUrl}" alt="Imagen del implemento" />
+                        <h2 th:text="${implementos[j].nombre}"></h2>
+                        <p th:text="${implementos[j].descripcion}"></p>
+                        <p>Precio: <span th:text="${implementos[j].precio}"></span></p>
+                    </div>
                 </div>
             </div>
         </div>

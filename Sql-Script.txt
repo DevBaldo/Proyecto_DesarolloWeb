@@ -14,6 +14,7 @@ CREATE TABLE Suplementos (
     Nombre VARCHAR(100),
     Descripcion VARCHAR(255),
     Precio DECIMAL(10, 2),
+    ImagenURL VARCHAR(255),
     PRIMARY KEY (ID)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -22,6 +23,7 @@ CREATE TABLE Vestimenta (
     Nombre VARCHAR(100),
     Talla VARCHAR(10),
     Precio DECIMAL(10, 2),
+    ImagenURL VARCHAR(255),
     PRIMARY KEY (ID)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -30,6 +32,7 @@ CREATE TABLE Implementos (
     Nombre VARCHAR(100),
     Descripcion VARCHAR(255),
     Precio DECIMAL(10, 2),
+    ImagenURL VARCHAR(255),
     PRIMARY KEY (ID)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 
@@ -39,5 +42,37 @@ CREATE TABLE Promociones (
     Descuento DECIMAL(10, 2),
     FechaInicio DATE,
     FechaFin DATE,
+    ImagenURL VARCHAR(255),
     PRIMARY KEY (ID)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
+
+USE Trainex;
+
+INSERT INTO Suplementos (Nombre, Descripcion, Precio, ImagenURL) VALUES
+('ObjetoEjemplo1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+
+INSERT INTO Vestimenta (Nombre, Talla, Precio, ImagenURL) VALUES
+('ObjetoEjemplo1', 'M', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo2', 'L', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo3', 'S', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo4', 'XL', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo5', 'XXL', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+
+INSERT INTO Implementos (Nombre, Descripcion, Precio, ImagenURL) VALUES
+('ObjetoEjemplo1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+
+INSERT INTO Promociones (Descripcion, Descuento, FechaInicio, FechaFin, ImagenURL) VALUES
+('ObjetoEjemplo1', 10.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo2', 20.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo3', 30.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo4', 40.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
+('ObjetoEjemplo5', 50.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png');
+
