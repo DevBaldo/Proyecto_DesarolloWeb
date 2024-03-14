@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Catálogo de Suplementos</title>
+        <style>
+            /* Estilos de la barra lateral */
+            .sidebar {
+                width: 200px;
+                height: calc(100vh - 46px);
+                position: fixed;
+                left: 0;
+                top: 46px;
+                background-color: #f0f0f0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .sidebar h2 {
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .sidebar ul li a {
+                display: block;
+                color: #000;
+                text-decoration: none;
+                padding: 5px 0;
+            }
+            .sidebar ul li a:hover {
+                color: #666;
+            }
+            .sidebar ul li a.suplementos {
+                color: red;
+            }
+            .sidebar ul li ul {
+                margin-left: 20px; /* Desplaza los submenús a la derecha */
+            }
+            /* Estilos existentes */
+            .navbar {
+                background-color: #000;
+                color: #fff;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .navbar a {
+                color: #fff;
+                margin-right: 10px;
+            }
+            .navbar a:last-child {
+                color: #f00;
+            }
+            .flex-container {
+                display: flex;
+                flex-wrap: nowrap; /* Cambiado a nowrap para organizar los elementos horizontalmente */
+                justify-content: space-around;
+                width: 90%; /* Ancho del contenedor como porcentaje de la pantalla */
+                margin: 0 auto; /* Márgenes automáticos para centrar el contenedor */
+                overflow-x: auto; /* Agregado para permitir el desplazamiento horizontal */
+            }
+            .suplemento {
+                border: 1px solid #000;
+                padding: 20px;
+                width: 200px; /* Tamaño específico de las cajas */
+                height: 400px; /* Tamaño específico de las cajas */
+                overflow-wrap: break-word; /* Hace que el texto se pliegue */
+                margin-bottom: 10px;
+            }
+            .suplemento img {
+                width: 100%; /* Ancho de la imagen */
+                height: auto; /* Altura automática para mantener las proporciones de la imagen */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Barra superior -->
+        <div class="navbar">
+            <div>
+                <a href="/"><img src="logo.png" alt="Logo" /></a>
+            </div>
+            <div>
+                <a href="/">Inicio</a>
+                <a href="/promociones">Promociones</a>
+                <a href="/vestimentas">Vestimentas</a>
+                <a href="/implementos">Implementos</a>
+                <a href="/suplementos">Suplementos</a>
+                <a href="/cuenta">Mi Cuenta</a>
+                <a href="/carrito">Carrito</a>
+            </div>
+        </div>
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <h2>Categorías</h2>
+            <ul>
+                <li>
+                     <a href="/promociones">Promociones</a>
+                </li>
+                <li>
+                    <a href="#" class="suplementos">Suplementos</a>
+                    <ul>
+                        <li><a href="#">Creatina</a></li>
+                        <li><a href="#">Proteína</a></li>
+                        <li><a href="#">Pre-entreno</a></li>
+                        <li><a href="#">Aminoácido</a></li>
+                    </ul>
+                </li>
+                <!-- Agrega más categorías aquí -->
+            </ul>
+        </div>
+        <!-- Contenido principal -->
+        <div style="margin-left: 220px;">
+            <h1>Catálogo de Suplementos</h1>
+            <div th:each="i : ${#numbers.sequence(0, suplementos.size()-1, 5)}">
+                <div class="flex-container">
+                    <div class="suplemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < suplementos.size()}">
+                        <img th:src="${suplementos[j].imagenUrl}" alt="Imagen del suplemento" />
+                        <h2 th:text="${suplementos[j].nombre}"></h2>
+                        <p th:text="${suplementos[j].descripcion}"></p>
+                        <p>Precio: <span th:text="${suplementos[j].precio}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
