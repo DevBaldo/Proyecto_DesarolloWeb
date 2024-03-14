@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this templateim-->
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Catálogo de Suplementos</title>
+        <title>Catálogo de Vestimentas</title>
         <style>
             /* Estilos de la barra lateral */
             .sidebar {
@@ -34,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             .sidebar ul li a:hover {
                 color: #666;
             }
-            .sidebar ul li a.suplementos {
+            .sidebar ul li a.vestimentas {
                 color: red;
             }
             .sidebar ul li ul {
@@ -63,7 +62,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 margin: 0 auto; /* Márgenes automáticos para centrar el contenedor */
                 overflow-x: auto; /* Agregado para permitir el desplazamiento horizontal */
             }
-            .suplemento {
+            .vestimenta {
                 border: 1px solid #000;
                 padding: 20px;
                 width: 200px; /* Tamaño específico de las cajas */
@@ -71,7 +70,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 overflow-wrap: break-word; /* Hace que el texto se pliegue */
                 margin-bottom: 10px;
             }
-            .suplemento img {
+            .vestimenta img {
                 width: 100%; /* Ancho de la imagen */
                 height: auto; /* Altura automática para mantener las proporciones de la imagen */
             }
@@ -98,36 +97,39 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h2>Categorías</h2>
             <ul>
                 <li>
-                     <a href="/promociones">Promociones</a>
+                    <a href="/promociones">Promociones</a>
                 </li>
                 <li>
-                    <a href="/vestimentas">Vestimenta</a>                    
+                    <a href="#" class="vestimentas">Vestimentas</a>
+                    <ul>
+                        <li><a href="#">Nueva Coleccion</a></li>
+                        <li><a href="#">Joggers</a></li>
+                        <li><a href="#">Shorts</a></li>
+                        <li><a href="#">Camisetas</a></li>
+                        <li><a href="#">Abrigos</a></li>
+                        <li><a href="#">Blusas</a></li>
+                        <li><a href="#">Leggings</a></li>
+                        <li><a href="#">Tops</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="/implementos">Implementos</a>
                 </li>
                 <li>
-                    <a href="#" class="suplementos">Suplementos</a>
-                    <ul>
-                        <li><a href="#">Creatina</a></li>
-                        <li><a href="#">Proteína</a></li>
-                        <li><a href="#">Pre-entreno</a></li>
-                        <li><a href="#">Aminoácido</a></li>
-                    </ul>
+                    <a href="/suplementos">Suplementos</a>
                 </li>
-                <!-- Agrega más categorías aquí -->
             </ul>
         </div>
         <!-- Contenido principal -->
         <div style="margin-left: 220px;">
-            <h1>Catálogo de Suplementos</h1>
-            <div th:each="i : ${#numbers.sequence(0, suplementos.size()-1, 5)}">
+            <h1>Catálogo de Vestimentas</h1>
+            <div th:each="i : ${#numbers.sequence(0, vestimentas.size()-1, 5)}">
                 <div class="flex-container">
-                    <div class="suplemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < suplementos.size()}">
-                        <img th:src="${suplementos[j].imagenUrl}" alt="Imagen del suplemento" />
-                        <h2 th:text="${suplementos[j].nombre}"></h2>
-                        <p th:text="${suplementos[j].descripcion}"></p>
-                        <p>Precio: <span th:text="${suplementos[j].precio}"></span></p>
+                    <div class="vestimenta" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < vestimentas.size()}">
+                        <img th:src="${vestimentas[j].imagenUrl}" alt="Imagen de la vestimenta" />
+                        <h2 th:text="${vestimentas[j].nombre}"></h2>
+                        <p>Talla: <span th:text="${vestimentas[j].talla}"></span></p>
+                        <p>Precio: <span th:text="${vestimentas[j].precio}"></span></p>
                     </div>
                 </div>
             </div>
