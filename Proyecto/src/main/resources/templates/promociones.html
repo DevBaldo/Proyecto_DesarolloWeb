@@ -34,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             .sidebar ul li a:hover {
                 color: #666;
             }
-            .sidebar ul li a.implementos {
+            .sidebar ul li a.promociones {
                 color: red;
             }
             .sidebar ul li ul {
@@ -63,7 +63,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 margin: 0 auto; /* Márgenes automáticos para centrar el contenedor */
                 overflow-x: auto; /* Agregado para permitir el desplazamiento horizontal */
             }
-            .implemento {
+            .promocion {
                 border: 1px solid #000;
                 padding: 20px;
                 width: 200px; /* Tamaño específico de las cajas */
@@ -71,7 +71,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 overflow-wrap: break-word; /* Hace que el texto se pliegue */
                 margin-bottom: 10px;
             }
-            .implemento img {
+            .promocion img {
                 width: 100%; /* Ancho de la imagen */
                 height: auto; /* Altura automática para mantener las proporciones de la imagen */
             }
@@ -98,16 +98,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h2>Categorías</h2>
             <ul>
                 <li>
-                    <a href="#">Promociones</a>
+                    <a href="#" class="promociones">Promociones</a>
                 </li>
                 <li>
-                    <a href="#">Suplementos</a>
+                    <a href="/vestimentas">Vestimenta</a>                    
                 </li>
                 <li>
-                    <a href="#">Implementos</a>
+                    <a href="/implementos">Implementos</a>
                 </li>
                 <li>
-                    <a href="#" class="vestimenta">Vestimenta</a>
+                    <a href="/suplementos">Suplementos</a>
                 </li>
             </ul>
         </div>
@@ -117,7 +117,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div th:each="i : ${#numbers.sequence(0, promociones.size()-1, 5)}">
                 <div class="flex-container">
                     <div class="promocion" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < promociones.size()}">
-                        <img th:src="${promociones[j].imagenURL}" alt="Imagen de la promoción" />
+                        <img th:src="${promociones[j].imagenUrl}" alt="Imagen de la promoción" />
                         <h2 th:text="${promociones[j].descripcion}"></h2>
                         <p>Descuento: <span th:text="${promociones[j].descuento}"></span></p>
                         <p>Fecha de Inicio: <span th:text="${promociones[j].fechaInicio}"></span></p>

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.grupo6.service.impl;
+
 import com.grupo6.dao.PromocionDao;
 import com.grupo6.domain.Promociones;
 import com.grupo6.service.PromocionService;

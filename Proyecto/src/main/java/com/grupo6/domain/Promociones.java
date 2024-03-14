@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.grupo6.domain;
+
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
