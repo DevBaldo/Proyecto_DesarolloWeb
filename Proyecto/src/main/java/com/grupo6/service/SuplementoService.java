@@ -20,4 +20,6 @@ public interface SuplementoService {
     public void save(Suplemento suplemento);
 
     public void delete(Suplemento suplemento);
+    
+    public List<Suplemento> buscarPorNombre(String nombre);
 }

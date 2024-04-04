@@ -44,4 +44,9 @@ public class PromocionServiceImpl implements PromocionService {
     public void delete(Promociones promocion) {
         promocionDao.delete(promocion);
     }
+    
+    @Override
+    public List<Promociones> buscarPorDescripcion(String descripcion) {
+        return promocionDao.findByDescripcionContaining(descripcion);
+    }
 }

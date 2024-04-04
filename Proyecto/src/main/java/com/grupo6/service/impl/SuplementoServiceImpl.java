@@ -45,5 +45,10 @@ public class SuplementoServiceImpl implements SuplementoService {
     public void delete(Suplemento suplemento) {
         suplementoDao.delete(suplemento);
     }
+    
+    @Override
+    public List<Suplemento> buscarPorNombre(String nombre) {
+        return suplementoDao.findByNombreContaining(nombre);
+    }
 }
 

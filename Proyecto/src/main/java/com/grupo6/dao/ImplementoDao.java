@@ -5,6 +5,7 @@
 package com.grupo6.dao;
 
 import com.grupo6.domain.Implemento;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Morgan
  */
 public interface ImplementoDao extends JpaRepository<Implemento, Long> {
-    
+    List<Implemento> findByNombreContaining(String nombre);
+
 }

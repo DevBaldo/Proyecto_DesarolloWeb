@@ -6,6 +6,7 @@ package com.grupo6.controller;
 
 import com.grupo6.domain.Vestimenta;
 import com.grupo6.service.VestimentaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -50,4 +51,10 @@ public class VestimentaController {
         return "redirect:/index";
     }
 
+    @GetMapping("/buscar")
+    public String buscar(@RequestParam("q") String query, Model model) {
+        List<Vestimenta> vestimentas = vestimentaService.buscarPorNombre(query);
+        model.addAttribute("vestimentas", vestimentas);
+        return "vestimentas";
+    }
 }

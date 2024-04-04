@@ -20,4 +20,6 @@ public interface ImplementoService {
     public void save(Implemento implemento);
 
     public void delete(Implemento implemento);
+    
+    public List<Implemento> buscarPorNombre(String nombre);
 }

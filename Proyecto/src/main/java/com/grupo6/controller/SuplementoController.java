@@ -6,6 +6,7 @@ package com.grupo6.controller;
 
 import com.grupo6.domain.Suplemento;
 import com.grupo6.service.SuplementoService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,5 +52,11 @@ public class SuplementoController {
         // Redirige a la página principal después de guardar
         return "redirect:/suplementos";
     }
-
+    
+    @GetMapping("/buscar")
+    public String buscar(@RequestParam("q") String query, Model model) {
+        List<Suplemento> suplementos = suplementoService.buscarPorNombre(query);
+        model.addAttribute("suplementos", suplementos);
+        return "suplementos";
+    }
 }

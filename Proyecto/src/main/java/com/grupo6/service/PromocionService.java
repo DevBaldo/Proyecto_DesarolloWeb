@@ -18,4 +18,6 @@ public interface PromocionService {
     void save(Promociones promocion);
 
     public void delete(Promociones promocion);
+    
+    public List<Promociones> buscarPorDescripcion(String descripcion);
 }

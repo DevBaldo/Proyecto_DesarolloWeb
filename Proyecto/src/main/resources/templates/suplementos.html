@@ -13,7 +13,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 height: calc(100vh - 46px);
                 position: fixed;
                 left: 0;
-                top: 46px;
+                top: 60px;
                 background-color: #f0f0f0;
                 padding: 20px;
                 box-sizing: border-box;
@@ -75,6 +75,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 width: 100%; /* Ancho de la imagen */
                 height: auto; /* Altura automática para mantener las proporciones de la imagen */
             }
+            /* Estilos de la barra de búsqueda */
+            .navbar form {
+                display: flex;
+                align-items: center;
+            }
+            .navbar input[type="text"] {
+                margin-left: auto; /* Alinea la barra de búsqueda a la derecha */
+                padding: 6px;
+                font-size: 17px;
+                border: none;
+            }
+            .navbar button {
+                padding: 6px 10px;
+                font-size: 17px;
+                border: none;
+                background-color: #000;
+                color: #fff;
+                cursor: pointer;
+            }
+            .navbar button:hover {
+                background-color: #666;
+            }
         </style>
     </head>
     <body>
@@ -91,6 +113,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <a href="/suplementos">Suplementos</a>
                 <a href="/cuenta">Mi Cuenta</a>
                 <a href="/carrito">Carrito</a>
+            </div>
+            <!-- Barra de búsqueda -->
+            <div>
+                <form action="/suplementos/buscar" method="get">
+                    <input type="text" name="q" placeholder="Buscar...">
+                    <button type="submit">Buscar</button>
+                </form>
             </div>
         </div>
         <!-- Barra lateral -->

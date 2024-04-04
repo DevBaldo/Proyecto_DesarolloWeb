@@ -4,6 +4,7 @@
  */
 package com.grupo6.dao;
 import com.grupo6.domain.Promociones;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -11,5 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author taraz
  */
 public interface PromocionDao extends JpaRepository<Promociones, Long> {
+    List<Promociones> findByDescripcionContaining(String descripcion);
     
 }

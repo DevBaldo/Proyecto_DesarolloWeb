@@ -6,6 +6,7 @@ package com.grupo6.controller;
 
 import com.grupo6.domain.Implemento;
 import com.grupo6.service.ImplementoService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +49,13 @@ public class ImplementoController {
 
         // Redirige a la página principal después de guardar
         return "redirect:/index";
+    }
+    
+    @GetMapping("/buscar")
+    public String buscar(@RequestParam("q") String query, Model model) {
+        List<Implemento> implementos = implementoService.buscarPorNombre(query);
+        model.addAttribute("implementos", implementos);
+        return "implementos";
     }
 
 }

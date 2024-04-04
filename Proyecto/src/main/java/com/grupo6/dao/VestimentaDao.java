@@ -5,6 +5,7 @@
 package com.grupo6.dao;
 
 import com.grupo6.domain.Vestimenta;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Morgan
  */
 public interface VestimentaDao extends JpaRepository<Vestimenta, Long> {
-    
+    List<Vestimenta> findByNombreContaining(String nombre);
+
 }

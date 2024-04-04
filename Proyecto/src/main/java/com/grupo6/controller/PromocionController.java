@@ -6,6 +6,7 @@ package com.grupo6.controller;
 
 import com.grupo6.domain.Promociones;
 import com.grupo6.service.PromocionService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,4 +54,11 @@ public class PromocionController {
     
     return "redirect:/promociones";
 }
+    
+    @GetMapping("/buscar")
+    public String buscar(@RequestParam("q") String query, Model model) {
+        List<Promociones> promociones = promocionService.buscarPorDescripcion(query);
+        model.addAttribute("promociones", promociones);
+        return "promociones";
+    }
 }

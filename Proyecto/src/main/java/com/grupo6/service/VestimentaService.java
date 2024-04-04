@@ -20,4 +20,6 @@ public interface VestimentaService {
     public void save(Vestimenta vestimenta);
 
     public void delete(Vestimenta vestimenta);
+    
+    public List<Vestimenta> buscarPorNombre(String nombre);
 }

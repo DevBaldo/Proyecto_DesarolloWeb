@@ -49,30 +49,49 @@ CREATE TABLE Promociones (
 USE Trainex;
 
 INSERT INTO Suplementos (Nombre, Descripcion, Precio, ImagenURL) VALUES
-('ObjetoEjemplo1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+('Suplemento1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento6', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 600.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento7', 'venenatis nibh dignissim mauris quam montes proin at praesent', 700.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento8', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 800.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento9', 'venenatis nibh dignissim mauris quam montes proin at praesent', 900.00, 'https://htmlcolors.com/color-image/ff8700.png'),
+('Suplemento10', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 1000.00, 'https://htmlcolors.com/color-image/ff8700.png');
 
 INSERT INTO Vestimenta (Nombre, Talla, Precio, ImagenURL) VALUES
-('ObjetoEjemplo1', 'M', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo2', 'L', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo3', 'S', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo4', 'XL', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo5', 'XXL', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+('Vestimenta1', 'M', 100.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta2', 'L', 200.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta3', 'S', 300.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta4', 'XL', 400.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta5', 'XXL', 500.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta6', 'M', 600.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta7', 'L', 700.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta8', 'S', 800.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta9', 'XL', 900.00, 'https://htmlcolors.com/color-image/4d82bc.png'),
+('Vestimenta10', 'XXL', 1000.00, 'https://htmlcolors.com/color-image/4d82bc.png');
 
 INSERT INTO Implementos (Nombre, Descripcion, Precio, ImagenURL) VALUES
-('ObjetoEjemplo1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/ff8700.png');
+('Implemento1', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 100.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento2', 'venenatis nibh dignissim mauris quam montes proin at praesent', 200.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento3', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 300.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento4', 'venenatis nibh dignissim mauris quam montes proin at praesent', 400.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento5', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 500.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento6', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 600.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento7', 'venenatis nibh dignissim mauris quam montes proin at praesent', 700.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento8', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 800.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento9', 'venenatis nibh dignissim mauris quam montes proin at praesent', 900.00, 'https://htmlcolors.com/color-image/42ab49.png'),
+('Implemento10', 'lorem ipsum dolor sit amet consectetur adipiscing elit tellus dictumst hac volutpat', 1000.00, 'https://htmlcolors.com/color-image/42ab49.png');
 
 INSERT INTO Promociones (Descripcion, Descuento, FechaInicio, FechaFin, ImagenURL) VALUES
-('ObjetoEjemplo1', 10.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo2', 20.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo3', 30.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo4', 40.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png'),
-('ObjetoEjemplo5', 50.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/ff8700.png');
-
+('Promocion1', 10.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion2', 20.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion3', 30.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion4', 40.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion5', 50.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion6', 60.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion7', 70.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion8', 80.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion9', 90.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
+('Promocion10', 100.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png');

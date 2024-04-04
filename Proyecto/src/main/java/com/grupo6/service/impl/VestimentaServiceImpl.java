@@ -44,4 +44,9 @@ public class VestimentaServiceImpl implements VestimentaService {
     public void delete(Vestimenta vestimenta) {
         vestimentaDao.delete(vestimenta);
     }
+    
+    @Override
+    public List<Vestimenta> buscarPorNombre(String nombre) {
+        return vestimentaDao.findByNombreContaining(nombre);
+    }
 }

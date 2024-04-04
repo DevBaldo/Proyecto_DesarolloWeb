@@ -44,4 +44,9 @@ public class ImplementoServiceImpl implements ImplementoService {
     public void delete(Implemento implemento) {
         implementoDao.delete(implemento);
     }
+    
+    @Override
+    public List<Implemento> buscarPorNombre(String nombre) {
+        return implementoDao.findByNombreContaining(nombre);
+    }
 }
