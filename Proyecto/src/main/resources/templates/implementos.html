@@ -156,14 +156,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <!-- Contenido principal -->
         <div style="margin-left: 220px;">
             <h1>Catálogo de Implementos</h1>
-            <div th:each="i : ${#numbers.sequence(0, implementos.size()-1, 5)}">
-                <div class="flex-container">
-                    <div class="implemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < implementos.size()}">
-                        <img th:src="${implementos[j].imagenUrl}" alt="Imagen del implemento" />
-                        <h2 th:text="${implementos[j].nombre}"></h2>
-                        <p th:text="${implementos[j].descripcion}"></p>
-                        <p>Precio: <span th:text="${implementos[j].precio}"></span></p>
-                    </div>
+            <div class="flex-container">
+                <div th:each="implemento : ${implementos}" class="implemento">
+                    <a th:href="@{/implementos/{id}(id=${implemento.id})}">
+                        <img th:src="${implemento.imagenUrl}" alt="Imagen del implemento" />
+                        <h2 th:text="${implemento.nombre}"></h2>
+                        <p th:text="${implemento.descripcion}"></p>
+                        <p>Precio: <span th:text="${implemento.precio}"></span></p>
+                    </a>
                 </div>
             </div>
         </div>

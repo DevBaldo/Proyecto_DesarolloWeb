@@ -32,6 +32,12 @@ public class ImplementoServiceImpl implements ImplementoService {
     public Implemento getImplemento(Implemento implemento) {
         return implementoDao.findById(implemento.getId()).orElse(null);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Implemento getImplementoById(Long id) {
+        return implementoDao.findById(id).orElse(null);
+    }
 
     @Override
     @Transactional

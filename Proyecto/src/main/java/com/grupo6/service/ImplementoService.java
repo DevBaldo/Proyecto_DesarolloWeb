@@ -16,6 +16,8 @@ public interface ImplementoService {
     public List<Implemento> getImplementos();
 
     public Implemento getImplemento(Implemento implemento);
+    
+    public Implemento getImplementoById(Long id);
 
     public void save(Implemento implemento);
 
