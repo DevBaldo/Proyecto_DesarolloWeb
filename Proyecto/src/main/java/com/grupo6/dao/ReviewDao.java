@@ -15,4 +15,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReviewDao extends JpaRepository<Review, Long> {
     List<Review> findByImplementoId(Long implementoId);
+    
+    List<Review> findBySuplementoId(Long suplementoId);
+    
+    List<Review> findByVestimentaId(Long suplementoId);
 }

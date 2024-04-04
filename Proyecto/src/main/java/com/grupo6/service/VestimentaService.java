@@ -16,6 +16,8 @@ public interface VestimentaService {
     public List<Vestimenta> getVestimentas();
 
     public Vestimenta getVestimenta(Vestimenta vestimenta);
+    
+    public Vestimenta getVestimentaById(Long id);
 
     public void save(Vestimenta vestimenta);
 

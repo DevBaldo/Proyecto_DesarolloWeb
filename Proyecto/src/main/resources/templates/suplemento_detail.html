@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Detalle del Suplemento</title>
+        <style>
+            /* Styles for the detail page */
+            .suplemento-detail {
+                margin: 20px auto;
+                width: 70%;
+                border: 1px solid #ccc;
+                padding: 20px;
+                background-color: #f9f9f9;
+            }
+            .suplemento-detail img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+            .suplemento-detail h2 {
+                margin-top: 0;
+                font-size: 24px;
+            }
+            .suplemento-detail p {
+                margin-bottom: 10px;
+            }
+            /* Review form styles */
+            .review-form {
+                margin-top: 20px;
+            }
+            .review-form textarea,
+            .review-form input[type="number"] {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="navbar">
+            <div>
+                <a href="/"><img src="logo.png" alt="Logo" /></a>
+            </div>
+            <div>
+                <a href="/">Inicio</a>
+                <a href="/promociones">Promociones</a>
+                <a href="/vestimentas">Vestimentas</a>
+                <a href="/implementos">Implementos</a>
+                <a href="/suplementos">Suplementos</a>
+                <a href="/cuenta">Mi Cuenta</a>
+                <a href="/carrito">Carrito</a>
+            </div>
+            <!-- Barra de búsqueda -->
+            <div>
+                <form action="/suplementos/buscar" method="get">
+                    <input type="text" name="q" placeholder="Buscar...">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="suplemento-detail">
+            <img th:if="${suplemento.imagenUrl != null}" th:src="${suplemento.imagenUrl}" alt="Imagen del suplemento" />
+            <h2 th:if="${suplemento.nombre != null}" th:text="${suplemento.nombre}">Nombre del Suplemento</h2>
+            <p th:if="${suplemento.descripcion != null}" th:text="${suplemento.descripcion}">Descripción del Suplemento</p>
+            <p>Precio: <span th:if="${suplemento.precio != null}" th:text="${suplemento.precio}">Precio no disponible</span></p>
+
+            <!-- Review form -->
+            <form class="review-form" th:action="@{/suplementos/{id}/reviews(id=${suplemento.id})}" method="post">
+                <input type="hidden" name="suplementoId" th:value="${suplemento.id}" />
+                <textarea rows="4" cols="50" name="content" placeholder="Escribe tu reseña aquí"></textarea><br/>
+                <input type="number" min="1" max="5" name="rating" placeholder="Calificación (1-5)"/><br/>
+                <button type="submit">Enviar Reseña</button>
+            </form>
+        </div>
+
+    </body>
+</html>

@@ -4,7 +4,9 @@
  */
 package com.grupo6.controller;
 
+import com.grupo6.domain.Review;
 import com.grupo6.domain.Suplemento;
+import com.grupo6.service.ReviewService;
 import com.grupo6.service.SuplementoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +28,9 @@ public class SuplementoController {
 
     @Autowired
     private SuplementoService suplementoService;
+    
+    @Autowired
+    private ReviewService reviewService;
 
     @GetMapping//("/index")
     public String inicio(Model model) {
@@ -58,5 +64,21 @@ public class SuplementoController {
         List<Suplemento> suplementos = suplementoService.buscarPorNombre(query);
         model.addAttribute("suplementos", suplementos);
         return "suplementos";
+    }
+    
+     @GetMapping("/{id}")
+    public String suplementoDetails(@PathVariable("id") Long id, Model model) {
+        Suplemento suplemento = suplementoService.getSuplementoById(id);
+        model.addAttribute("suplemento", suplemento);
+        return "suplemento_detail";
+    }
+
+    @PostMapping("/{suplementoId}/reviews")
+    public String addSuplementoReview(@PathVariable("suplementoId") Long suplementoId,
+            @ModelAttribute Review review) {
+        Suplemento suplemento = suplementoService.getSuplementoById(suplementoId);
+        review.setSuplemento(suplemento);
+        reviewService.saveReview(review);
+        return "redirect:/suplementos/{suplementoId}";
     }
 }

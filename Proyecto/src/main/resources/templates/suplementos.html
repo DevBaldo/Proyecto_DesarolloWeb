@@ -150,14 +150,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <!-- Contenido principal -->
         <div style="margin-left: 220px;">
             <h1>Catálogo de Suplementos</h1>
-            <div th:each="i : ${#numbers.sequence(0, suplementos.size()-1, 5)}">
-                <div class="flex-container">
-                    <div class="suplemento" th:each="j : ${#numbers.sequence(i, i+4)}" th:if="${j < suplementos.size()}">
-                        <img th:src="${suplementos[j].imagenUrl}" alt="Imagen del suplemento" />
-                        <h2 th:text="${suplementos[j].nombre}"></h2>
-                        <p th:text="${suplementos[j].descripcion}"></p>
-                        <p>Precio: <span th:text="${suplementos[j].precio}"></span></p>
-                    </div>
+             <div class="flex-container">
+                <div th:each="suplemento : ${suplementos}" class="suplemento">
+                    <a th:href="@{/suplementos/{id}(id=${suplemento.id})}">
+                        <img th:src="${suplemento.imagenUrl}" alt="Imagen del suplemento" />
+                        <h2 th:text="${suplemento.nombre}"></h2>
+                        <p th:text="${suplemento.descripcion}"></p>
+                        <p>Precio: <span th:text="${suplemento.precio}"></span></p>
+                    </a>
                 </div>
             </div>
         </div>

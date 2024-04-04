@@ -17,6 +17,8 @@ public interface SuplementoService {
 
     public Suplemento getSuplemento(Suplemento suplemento);
 
+    public Suplemento getSuplementoById(Long id);
+     
     public void save(Suplemento suplemento);
 
     public void delete(Suplemento suplemento);

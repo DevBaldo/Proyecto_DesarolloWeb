@@ -32,6 +32,12 @@ public class VestimentaServiceImpl implements VestimentaService {
     public Vestimenta getVestimenta(Vestimenta vestimenta) {
         return vestimentaDao.findById(vestimenta.getId()).orElse(null);
     }
+    
+     @Override
+    @Transactional(readOnly = true)
+    public Vestimenta getVestimentaById(Long id) {
+        return vestimentaDao.findById(id).orElse(null);
+    }
 
     @Override
     @Transactional

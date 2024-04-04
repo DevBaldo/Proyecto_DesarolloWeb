@@ -6,6 +6,7 @@ package com.grupo6.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 /**
  *
@@ -35,6 +36,17 @@ public class Vestimenta implements Serializable {
     
     @Column(name = "ImagenURL")
     private String imagenUrl;
+    
+    @OneToMany(mappedBy = "vestimenta")
+    private List<Review> reviews;
+    
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
     
     public Vestimenta() {
     }

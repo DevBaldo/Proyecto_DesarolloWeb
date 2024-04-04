@@ -2,6 +2,7 @@ package com.grupo6.domain;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -27,6 +28,17 @@ public class Suplemento implements Serializable {
     
     @Column(name = "ImagenURL")
     private String imagenUrl;
+    
+    @OneToMany(mappedBy = "suplemento")
+    private List<Review> reviews;
+    
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
     
     public Suplemento() {
     }

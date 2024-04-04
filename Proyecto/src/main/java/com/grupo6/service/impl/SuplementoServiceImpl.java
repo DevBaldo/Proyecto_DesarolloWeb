@@ -33,6 +33,12 @@ public class SuplementoServiceImpl implements SuplementoService {
     public Suplemento getSuplemento(Suplemento suplemento) {
         return suplementoDao.findById(suplemento.getId()).orElse(null);
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Suplemento getSuplementoById(Long id) {
+        return suplementoDao.findById(id).orElse(null);
+    }
 
     @Override
     @Transactional

@@ -37,6 +37,30 @@ public class Review implements Serializable {
         this.implemento = implemento;
     }
     
+    @ManyToOne
+    @JoinColumn(name = "suplemento_id", referencedColumnName = "id")
+    private Suplemento suplemento;
+    
+    public Suplemento getSuplemento() {
+        return suplemento;
+    }
+
+    public void setSuplemento(Suplemento suplemento) {
+        this.suplemento = suplemento;
+    }
+    
+    @ManyToOne
+    @JoinColumn(name = "vestimenta_id", referencedColumnName = "id")
+    private Vestimenta vestimenta;
+    
+    public Vestimenta getVestimenta() {
+        return vestimenta;
+    }
+
+    public void setVestimenta(Vestimenta vestimenta) {
+        this.vestimenta = vestimenta;
+    }
+    
     public Review(){
         
     }
