@@ -13,7 +13,6 @@ import com.grupo6.service.SuplementoService;
 import com.grupo6.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,18 +23,18 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 @Controller
 public class ReviewController {
-
-    @Autowired
-    private ImplementoService implementoService;
     
     @Autowired
-    private VestimentaService implementoService;
+    private ImplementoService implementoService;
     
     @Autowired
     private SuplementoService suplementoService;
 
     @Autowired
     private ReviewService reviewService;
+    
+    @Autowired
+    private VestimentaService vestimentaService;
 
     @PostMapping("/implementos/{id}/reviews")
     public String addReview(@PathVariable Long id, @ModelAttribute Review review) {
