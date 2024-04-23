@@ -72,13 +72,4 @@ public class ImplementoController {
         model.addAttribute("implemento", implemento);
         return "implemento_detail";
     }
-
-    @PostMapping("/{implementoId}/reviews")
-    public String addReview(@PathVariable("implementoId") Long implementoId,
-            @ModelAttribute Review review) {
-        Implemento implemento = implementoService.getImplementoById(implementoId);
-        review.setImplemento(implemento);
-        reviewService.saveReview(review);
-        return "redirect:/implementos/{implementoId}";
-    }
 }

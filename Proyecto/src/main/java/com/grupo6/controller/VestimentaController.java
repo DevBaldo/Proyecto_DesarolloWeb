@@ -70,13 +70,4 @@ public class VestimentaController {
         model.addAttribute("vestimenta", vestimenta);
         return "vestimenta_detail";
     }
-
-    @PostMapping("/{vestimentaId}/reviews")
-    public String addVestimentaReview(@PathVariable("vestimentaId") Long vestimentaId,
-            @ModelAttribute Review review) {
-        Vestimenta vestimenta = vestimentaService.getVestimentaById(vestimentaId);
-        review.setVestimenta(vestimenta);
-        reviewService.saveReview(review);
-        return "redirect:/vestimentas/{vestimentaId}";
-    }
 }

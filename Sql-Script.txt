@@ -96,15 +96,14 @@ INSERT INTO Promociones (Descripcion, Descuento, FechaInicio, FechaFin, ImagenUR
 ('Promocion9', 90.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png'),
 ('Promocion10', 100.00, '2024-01-01', '2024-12-31', 'https://htmlcolors.com/color-image/e2504c.png');
 
-CREATE TABLE Review (
+CREATE TABLE Reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    entity_type VARCHAR(50),
-    entity_id INT,
     content TEXT,
     rating INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (entity_id) REFERENCES Suplementos(id) ON DELETE CASCADE,
-    FOREIGN KEY (entity_id) REFERENCES Vestimenta(id) ON DELETE CASCADE,
-    FOREIGN KEY (entity_id) REFERENCES Implementos(id) ON DELETE CASCADE,
-    CHECK (entity_type IN ('suplementos', 'vestimenta', 'implementos'))
+    implemento_id INT,
+    suplemento_id INT,
+    vestimenta_id INT,
+    FOREIGN KEY (implemento_id) REFERENCES Implementos(id) ON DELETE CASCADE,
+    FOREIGN KEY (suplemento_id) REFERENCES Suplementos(id) ON DELETE CASCADE,
+    FOREIGN KEY (vestimenta_id) REFERENCES Vestimenta(id) ON DELETE CASCADE
 );

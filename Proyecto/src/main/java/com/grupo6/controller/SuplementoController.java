@@ -72,13 +72,4 @@ public class SuplementoController {
         model.addAttribute("suplemento", suplemento);
         return "suplemento_detail";
     }
-
-    @PostMapping("/{suplementoId}/reviews")
-    public String addSuplementoReview(@PathVariable("suplementoId") Long suplementoId,
-            @ModelAttribute Review review) {
-        Suplemento suplemento = suplementoService.getSuplementoById(suplementoId);
-        review.setSuplemento(suplemento);
-        reviewService.saveReview(review);
-        return "redirect:/suplementos/{suplementoId}";
-    }
 }
