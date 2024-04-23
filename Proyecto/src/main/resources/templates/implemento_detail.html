@@ -152,7 +152,13 @@
             <h2 th:if="${implemento.nombre != null}" th:text="${implemento.nombre}">Nombre del Implemento</h2>
             <p th:if="${implemento.descripcion != null}" th:text="${implemento.descripcion}">Descripción del Implemento</p>
             <p>Precio: <span th:if="${implemento.precio != null}" th:text="${implemento.precio}">Precio no disponible</span></p>
-
+            
+            <!-- Formulario para añadir un implemento al carrito -->
+            <form th:action="@{/implementos/{id}/cartItems(id=${implemento.id})}" method="post">
+                <input type="hidden" name="implementoId" th:value="${implemento.id}" />
+                <button type="submit">Añadir al carrito</button>
+            </form>
+            
             <!-- Review form -->
             <form class="review-form" th:action="@{/implementos/{id}/reviews(id=${implemento.id})}" method="post">
                 <input type="hidden" name="implementoId" th:value="${implemento.id}" />

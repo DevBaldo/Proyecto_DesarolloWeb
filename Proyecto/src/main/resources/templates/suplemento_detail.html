@@ -152,7 +152,13 @@
             <h2 th:if="${suplemento.nombre != null}" th:text="${suplemento.nombre}">Nombre del Suplemento</h2>
             <p th:if="${suplemento.descripcion != null}" th:text="${suplemento.descripcion}">Descripción del Suplemento</p>
             <p>Precio: <span th:if="${suplemento.precio != null}" th:text="${suplemento.precio}">Precio no disponible</span></p>
-
+            
+            <!-- Formulario para añadir un suplemento al carrito -->
+            <form th:action="@{/suplementos/{id}/cartItems(id=${suplemento.id})}" method="post">
+                <input type="hidden" name="suplementoId" th:value="${suplemento.id}" />
+                <button type="submit">Añadir al carrito</button>
+            </form>
+            
             <!-- Review form -->
             <form class="review-form" th:action="@{/suplementos/{id}/reviews(id=${suplemento.id})}" method="post">
                 <input type="hidden" name="suplementoId" th:value="${suplemento.id}" />
