@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Modificar Usuario</title>
+</head>
+<body>
+    <h2>Modificar Usuario</h2>
+    <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{idUsuario}" />
+        <label>Nombre de Usuario:</label>
+        <input type="text" th:field="*{username}" />
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" />
+        <label>Apellidos:</label>
+        <input type="text" th:field="*{apellidos}" />
+        <label>Correo Electrónico:</label>
+        <input type="email" th:field="*{correo}" />
+        <label>Teléfono:</label>
+        <input type="tel" th:field="*{telefono}" />
+        <input type="submit" value="Guardar" />
+    </form>
+</body>
+</html>

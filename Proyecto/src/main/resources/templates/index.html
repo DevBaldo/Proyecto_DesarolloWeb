@@ -34,11 +34,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <a href="/vestimentas">Vestimentas</a>
                 <a href="/implementos">Implementos</a>
                 <a href="/suplementos">Suplementos</a>
-                <a href="/cuenta">Mi Cuenta</a>
+                <a href="/usuario/listado">Mi Cuenta</a>
                 <a href="/carrito">Carrito</a>
             </div>
             <!-- Barra de búsqueda -->
             <div>
+            <!-- Log out button -->
+                <div>
+                    <a th:href="@{/login}" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+                </div>
             </div>
         </div>
         <h1>Inicio</h1>
