@@ -12,8 +12,10 @@ import com.grupo6.service.CartItemService;
 import com.grupo6.service.ImplementoService;
 import com.grupo6.service.SuplementoService;
 import com.grupo6.service.VestimentaService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 /**
  *
@@ -65,5 +67,26 @@ public class CartItemController {
         cartItemService.saveCartItem(cartItem);
 
         return "redirect:/vestimentas/" + id;
+    }
+    
+    @GetMapping("/carrito")
+    public String showCart(Model model) {
+        List<CartItem> cartItems = cartItemService.getAllCartItems();
+        double total = cartItemService.calculateTotal();
+        model.addAttribute("cartItems", cartItems);
+        model.addAttribute("total", total);
+        return "carrito";
+    }
+
+    @PostMapping("/carrito/{id}/delete")
+    public String deleteCartItem(@PathVariable Long id) {
+        cartItemService.deleteCartItem(id);
+        return "redirect:/carrito";
+    }
+
+    @PostMapping("/carrito/empty")
+    public String emptyCart() {
+        cartItemService.emptyCart();
+        return "redirect:/";
     }
 }

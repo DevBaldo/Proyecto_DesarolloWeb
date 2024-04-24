@@ -5,6 +5,7 @@
 package com.grupo6.service;
 
 import com.grupo6.domain.CartItem;
+import java.util.List;
 
 /**
  *
@@ -12,4 +13,8 @@ import com.grupo6.domain.CartItem;
  */
 public interface CartItemService {
     void saveCartItem(CartItem cartItem);
+    List<CartItem> getAllCartItems();
+    void deleteCartItem(Long id);
+    double calculateTotal();
+    void emptyCart();
 }

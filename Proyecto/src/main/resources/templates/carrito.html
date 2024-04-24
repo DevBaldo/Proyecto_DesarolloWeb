@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Carrito</title>
+        <style>
+            /* Estilos de la barra lateral */
+            .sidebar {
+                position: fixed;
+                right: 0;
+                width: 200px;
+                height: calc(100vh - 46px);
+                top: 60px;
+                background-color: #f0f0f0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            /* Estilos del contenedor del carrito */
+            .cart-container {
+                margin: 0 auto; /* Centra el contenedor */
+                width: 80%; /* Ancho del contenedor */
+                background-color: #f8f8f8; /* Color de fondo del contenedor */
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            /* Estilos de los items del carrito */
+            .cartItem {
+                display: flex; /* Organiza los elementos del item en una fila */
+                align-items: center; /* Alinea verticalmente los elementos del item */
+                background-color: #f0f0f0; /* Color de fondo del item */
+                margin-bottom: 10px; /* Espacio entre items */
+                padding: 10px;
+                box-sizing: border-box;
+            }
+            .cartItem img {
+                width: 50px;
+                height: 50px;
+            }
+            .cartItem h2,
+            .cartItem p {
+                margin-left: 10px;
+            }
+            .cartItem button {
+                margin-left: auto; /* Alinea el botón a la derecha */
+            }
+            .sidebar h2 {
+                margin-top: 0;
+            }
+            .sidebar ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .sidebar ul li a {
+                display: block;
+                color: #000;
+                text-decoration: none;
+                padding: 5px 0;
+            }
+            .sidebar ul li a:hover {
+                color: #666;
+            }
+            .sidebar ul li a.implementos {
+                color: red;
+            }
+            .sidebar ul li ul {
+                margin-left: 20px; /* Desplaza los submenús a la derecha */
+            }
+            /* Estilos existentes */
+            .navbar {
+                background-color: #000;
+                color: #fff;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .navbar a {
+                color: #fff;
+                margin-right: 10px;
+            }
+            .navbar a:last-child {
+                color: #f00;
+            }
+            .flex-container {
+                display: flex;
+                flex-wrap: nowrap; /* Cambiado a nowrap para organizar los elementos horizontalmente */
+                justify-content: space-around;
+                width: 90%; /* Ancho del contenedor como porcentaje de la pantalla */
+                margin: 0 auto; /* Márgenes automáticos para centrar el contenedor */
+                overflow-x: auto; /* Agregado para permitir el desplazamiento horizontal */
+            }
+            .implemento {
+                border: 1px solid #000;
+                padding: 20px;
+                width: 200px; /* Tamaño específico de las cajas */
+                height: 400px; /* Tamaño específico de las cajas */
+                overflow-wrap: break-word; /* Hace que el texto se pliegue */
+                margin-bottom: 10px;
+            }
+            .implemento img {
+                width: 100%; /* Ancho de la imagen */
+                height: auto; /* Altura automática para mantener las proporciones de la imagen */
+            }
+            /* Estilos de la barra de búsqueda */
+            .navbar form {
+                display: flex;
+                align-items: center;
+            }
+            .navbar input[type="text"] {
+                margin-left: auto; /* Alinea la barra de búsqueda a la derecha */
+                padding: 6px;
+                font-size: 17px;
+                border: none;
+            }
+            .navbar button {
+                padding: 6px 10px;
+                font-size: 17px;
+                border: none;
+                background-color: #000;
+                color: #fff;
+                cursor: pointer;
+            }
+            .navbar button:hover {
+                background-color: #666;
+            }
+            .main-content {
+                margin-right: 220px;
+                margin-left: 75px; /* Agrega un margen a la izquierda */
+                width: 80%; /* Ancho del contenido principal como porcentaje de la pantalla */
+                background-color: #f5f5f5; /* Color de fondo un poco más oscuro que el blanco */
+                padding: 20px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Barra superior -->
+        <div class="navbar">
+            <div>
+                <a href="/"><img src="logo.png" alt="Logo" /></a>
+            </div>
+            <div>
+                <a href="/">Inicio</a>
+                <a href="/promociones">Promociones</a>
+                <a href="/vestimentas">Vestimentas</a>
+                <a href="/implementos">Implementos</a>
+                <a href="/suplementos">Suplementos</a>
+                <a href="/cuenta">Mi Cuenta</a>
+                <a href="/carrito">Carrito</a>
+            </div>
+            <!-- Barra de búsqueda -->
+            <div>
+            </div>
+        </div>
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <h2>Resumen del carrito</h2>
+            <p>Total: <span th:text="${total}"></span></p>
+            <p>Cantidad de items: <span th:text="${#lists.size(cartItems)}"></span></p>
+            <form th:action="@{/carrito/empty}" method="post">
+                <button type="submit">Pagar</button>
+            </form>
+        </div>
+        <!-- Contenido principal -->
+        <div style="margin-right: 220px;" class="main-content">
+            <h1>Carrito</h1>
+            <div th:each="item : ${cartItems}">
+                <div class="cartItem">
+                    <img th:src="${item.implemento != null ? item.implemento.getImagenUrl() : item.suplemento != null ? item.suplemento.getImagenUrl() : item.vestimenta.getImagenUrl()}" alt="Imagen del item" style="width: 50px; height: 50px;" />
+                    <div style="display: inline-block; vertical-align: top; margin-left: 10px;">
+                        <h2 th:text="${item.implemento != null ? item.implemento.getNombre() : item.suplemento != null ? item.suplemento.getNombre() : item.vestimenta.getNombre()}"></h2>
+                        <p>Precio: <span th:text="${item.implemento != null ? item.implemento.getPrecio() : item.suplemento != null ? item.suplemento.getPrecio() : item.vestimenta.getPrecio()}"></span></p>
+                    </div>
+                    <form th:action="@{/carrito/{id}/delete(id=${item.id})}" method="post" style="display: inline-block; vertical-align: top; margin-left: 10px;">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
