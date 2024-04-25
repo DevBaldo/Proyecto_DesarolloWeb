@@ -99,4 +99,23 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
+    
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests((request) -> request
+                .requestMatchers("/", "/index", "/registro/nuevo", "/js/**", "/webjars/**",
+                        "/carrito", "/implemento", "/implemento_detail",
+                        "/promociones","/suplemento", "/suplemento_detail",
+                        "/registro/activa","/vestimenta", "/vestimenta_detail",
+                        "/registro/nuevo", "/registro/recordar", "/registro/salida").permitAll() // permitir acceso sin autenticación
+                        
+                .requestMatchers("/usuario/listado").hasAnyRole("ADMIN", "VENDEDOR", "USER") // solo requiere autenticación para /usuario/listado
+                .anyRequest().authenticated() // cualquier otra solicitud requiere autenticación
+                )
+                .formLogin((form) -> form
+                .loginPage("/login").permitAll()) // tu página de inicio de sesión personalizada
+                .logout((logout) -> logout.permitAll());
+        return http.build();
+    }
 }

@@ -3,54 +3,54 @@
       xmlns:th="http://wwww.thymeleaf.org">
     <head>
         <title>Trainex</title>
-    <meta charset="UTF-8"/>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .container {
-            margin-top: 5%;
-        }
-
-        .card-header {
-            background-color: #28a745;
-            color: #fff;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        /* Form styles */
-        .form-group {
-            margin-bottom: 0;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        /* Button styles */
-        .btn {
-            width: 150px;
-        }
-
-        .btn-primary {
-            background-color: #dc3545;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .col-md-6 {
-                width: 100%;
+        <meta charset="UTF-8"/>
+        <style>
+            body {
+                background-color: #000;
+                color: #fff;
             }
-        }
-    </style>
+
+            .container {
+                margin-top: 5%;
+            }
+
+            .card-header {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+            .card-footer {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            /* Form styles */
+            .form-group {
+                margin-bottom: 0;
+            }
+
+            .card-body {
+                padding: 20px;
+            }
+
+            /* Button styles */
+            .btn {
+                width: 150px;
+            }
+
+            .btn-primary {
+                background-color: #dc3545;
+            }
+
+            /* Responsive styles */
+            @media (max-width: 768px) {
+                .col-md-6 {
+                    width: 100%;
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="container my-5">
@@ -79,7 +79,7 @@
                                 </div>
                             </form>                            
                         </div>
-                        <div
+                        <div>
                             <button class="btn btn-primary" >
                                 <a th:href="@{/registro/nuevo}" class="btn"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a></button>
                         </div>
