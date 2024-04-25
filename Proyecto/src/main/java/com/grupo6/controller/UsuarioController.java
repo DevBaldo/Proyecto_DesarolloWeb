@@ -5,13 +5,13 @@
 package com.grupo6.controller;
 import com.grupo6.domain.Usuario;
 import com.grupo6.service.UsuarioService;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import javax.validation.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,8 +51,8 @@ public class UsuarioController {
 
     @PostMapping("/guardar")
     public String usuarioGuardar(Usuario usuario,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
-        if (!imagenFile.isEmpty()) {
+            @RequestParam(value = "imagenFile", required = false) MultipartFile imagenFile) {
+        if (imagenFile != null && !imagenFile.isEmpty()) {
         try {
             
             String fileName = StringUtils.cleanPath(imagenFile.getOriginalFilename());
@@ -79,9 +79,10 @@ public class UsuarioController {
 }
 
     @GetMapping("/eliminar/{idUsuario}")
-    public String usuarioEliminar(Usuario usuario) {
+    public String usuarioEliminar(Usuario usuario, HttpSession session) {
         usuarioService.delete(usuario);
-        return "redirect:/usuario/listado";
+        session.invalidate();  // Cierra la sesión
+        return "redirect:/";
     }
 
     @GetMapping("/modificar/{idUsuario}")

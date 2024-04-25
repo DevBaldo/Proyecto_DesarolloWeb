@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     private String rutaImagen;    
     private boolean activo;
     
-    @OneToMany
-    @JoinColumn(name="id_usuario")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario")
     List<Rol> roles;
 }

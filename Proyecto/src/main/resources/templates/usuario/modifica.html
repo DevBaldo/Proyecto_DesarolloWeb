@@ -7,8 +7,10 @@
     <h2>Modificar Usuario</h2>
     <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
         <input type="hidden" th:field="*{idUsuario}" />
-        <label>Nombre de Usuario:</label>
-        <input type="text" th:field="*{username}" />
+        <input type="hidden" th:field="*{username}" />
+        <input type="hidden" th:field="*{activo}" />
+        <input type="hidden" th:field="*{password}" />
+        
         <label>Nombre:</label>
         <input type="text" th:field="*{nombre}" />
         <label>Apellidos:</label>

@@ -9,6 +9,7 @@ import com.grupo6.dao.UsuarioDao;
 import com.grupo6.domain.Rol;
 import com.grupo6.domain.Usuario;
 import com.grupo6.service.UsuarioService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,13 +68,32 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     @Transactional
     public void save(Usuario usuario, boolean crearRolUser) {
-        usuario = usuarioDao.save(usuario);
-        if (crearRolUser) {  //Si se está creando el usuario, se crea el rol por defecto "USER"
-            Rol rol = new Rol();
-            rol.setNombre("ROLE_USER");
-            rol.setIdUsuario(usuario.getIdUsuario());
-            rolDao.save(rol);
+        if (crearRolUser) {  //Si se está creando el usuario, se crean los roles por defecto
+            Rol rolUser = new Rol();
+            rolUser.setNombre("ROLE_USER");
+            rolUser.setUsuario(usuario);
+            if (usuario.getRoles() == null) {
+                usuario.setRoles(new ArrayList<>());
+            }
+            usuario.getRoles().add(rolUser);
+
+            Rol rolAdmin = new Rol();
+            rolAdmin.setNombre("ROLE_ADMIN");
+            rolAdmin.setUsuario(usuario);
+            if (usuario.getRoles() == null) {
+                usuario.setRoles(new ArrayList<>());
+            }
+            usuario.getRoles().add(rolAdmin);
+
+            Rol rolVendedor = new Rol();
+            rolVendedor.setNombre("ROLE_VENDEDOR");
+            rolVendedor.setUsuario(usuario);
+            if (usuario.getRoles() == null) {
+                usuario.setRoles(new ArrayList<>());
+            }
+            usuario.getRoles().add(rolVendedor);
         }
+        usuario = usuarioDao.save(usuario);
     }
 
     @Override
