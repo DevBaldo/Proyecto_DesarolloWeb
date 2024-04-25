@@ -52,7 +52,7 @@ public class RegistroController {
             @PathVariable(value = "id") String id) {
         model = registroService.activar(model, usuario, id);
         if (model.containsAttribute("usuario")) {
-            return "/registro/activa";
+            return "/registro/activar";
         } else {
             return "/registro/salida";
         }

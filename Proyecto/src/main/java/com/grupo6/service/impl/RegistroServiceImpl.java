@@ -177,6 +177,7 @@ public class RegistroServiceImpl implements RegistroService {
     private String servidor;
 
     private void enviaCorreoActivar(Usuario usuario, String clave) throws MessagingException {
+        String activationLink = "http://" + servidor + "/registro/activar/" + usuario.getUsername() + "/" + clave;
         String mensaje = messageSource.getMessage(
                 "registro.correo.activar", 
                 null, Locale.getDefault());

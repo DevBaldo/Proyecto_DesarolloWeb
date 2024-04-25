@@ -1,8 +1,89 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/plantilla :: head}">
+<head>
     <title>Trainex</title>
+    <style>
+        body {
+            background-color: #fff; /* Background color */
+            color: #000; /* Text color */
+            font-family: "Roboto", sans-serif; /* Font family */
+            font-weight: 400; /* Font weight */
+            font-size: 16px; /* Font size */
+            -webkit-font-smoothing: antialiased; /* Smooth font rendering for WebKit */
+            -moz-osx-font-smoothing: grayscale; /* Smooth font rendering for Firefox */
+            display: flex; /* Center everything horizontally */
+            justify-content: center; /* Center everything horizontally */
+            align-items: center; /* Center everything vertically */
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        /* Card styles */
+        .card {
+            border: 0; /* Remove border */
+            border-radius: 0; /* Remove border radius */
+            box-shadow: none; /* Remove box shadow */
+        }
+
+        .card-header {
+            background-color: transparent; /* Card header background color */
+            color: #fff; /* Card header text color */
+            font-weight: 600; /* Card header font weight */
+            padding: 10px 20px; /* Card header padding */
+            display: flex; /* Center logo horizontally */
+            justify-content: center; /* Center logo horizontally */
+            align-items: center; /* Center logo vertically */
+        }
+
+        .card-body {
+            padding: 20px; /* Card body padding */
+        }
+
+        .card-footer {
+            background-color: #f9f9f9; /* Card footer background color */
+            padding: 20px; /* Card footer padding */
+        }
+
+        /* Button styles */
+        .btn {
+            background-color: #e73526; /* Button background color */
+            color: #fff; /* Button text color */
+            border: 0; /* Remove button border */
+            border-radius: 3px; /* Button border radius */
+            padding: 10px 20px; /* Button padding */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            text-decoration: none; /* Remove default button underline */
+        }
+
+        .btn:hover {
+            background-color: #ad0000; /* Button background color on hover */
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 20px; /* Form group margin bottom */
+        }
+
+        label {
+            font-weight: 600; /* Label font weight */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%; /* Input width */
+            padding: 10px; /* Input padding */
+            border: 1px solid #ccc; /* Input border */
+            border-radius: 3px; /* Input border radius */
+            box-sizing: border-box; /* Include padding and border in input width */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .col-md-6 {
+                width: 100%; /* Set column width to 100% on smaller screens */
+            }
+        }
+    </style>
 </head>
 <body>
     <section th:replace="~{registro/fragmentos :: nuevoUsuario}">

@@ -3,66 +3,19 @@
     <head>
         <title>Perfil del Usuario</title>
         <style>
-            body {
-                background-color: black;
-                color: white;
-                font-family: Arial, sans-serif;
-                padding: 20px;
-            }
-            h2 {
-                color: white;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-            th, td {
-                border: 1px solid white;
-                padding: 8px;
-                text-align: left;
-            }
-            th {
-                background-color: #333;
-                color: white;
-            }
-            tr:nth-child(even) {
-                background-color: #555;
-            }
-            tr:nth-child(odd) {
-                background-color: #444;
-            }
-            td a {
-                color: #66CCFF;
-                text-decoration: none;
-                margin-right: 10px;
-            }
-            td a:hover {
-                color: #00FFFF;
-            }
-            /* Estilos de la barra de búsqueda */
-            .navbar form {
-                display: flex;
-                align-items: center;
-            }
-            .navbar input[type="text"] {
-                margin-left: auto; /* Alinea la barra de búsqueda a la derecha */
-                padding: 6px;
-                font-size: 17px;
-                border: none;
-            }
-            .navbar button {
-                padding: 6px 10px;
-                font-size: 17px;
-                border: none;
+            .navbar {
                 background-color: #000;
                 color: #fff;
-                cursor: pointer;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
             }
-            .navbar button:hover {
-                background-color: #666;
+            .navbar a {
+                color: #fff;
+                margin-right: 10px;
+            }
+            .navbar a:last-child {
+                color: #f00;
             }
         </style>
     </head>
