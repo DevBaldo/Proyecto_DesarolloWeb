@@ -39,21 +39,21 @@ public class RegistroServiceImpl implements RegistroService {
 
     @Override
     public Model activar(Model model, String username, String clave) {
-        Usuario usuario = 
-                usuarioService.getUsuarioPorUsernameYPassword(username, 
-                        clave);
+        Usuario usuario = usuarioService.getUsuarioPorUsernameYPassword(username, clave);
         if (usuario != null) {
+            usuario.setActivo(true);  // Asegúrate de que el usuario esté activo
+            usuarioService.save(usuario, true);  // Guarda el usuario activo en la base de datos
             model.addAttribute("usuario", usuario);
         } else {
             model.addAttribute(
-                    "titulo", 
+                    "titulo",
                     messageSource.getMessage(
-                            "registro.activar", 
-                            null,  Locale.getDefault()));
+                            "registro.activar",
+                            null, Locale.getDefault()));
             model.addAttribute(
-                    "mensaje", 
+                    "mensaje",
                     messageSource.getMessage(
-                            "registro.activar.error", 
+                            "registro.activar.error",
                             null, Locale.getDefault()));
         }
         return model;
@@ -63,13 +63,14 @@ public class RegistroServiceImpl implements RegistroService {
     public void activar(Usuario usuario, MultipartFile imagenFile) {
         var codigo = new BCryptPasswordEncoder();
         usuario.setPassword(codigo.encode(usuario.getPassword()));
+        usuario.setActivo(true);  // Asegúrate de que el usuario esté activo
 
         if (!imagenFile.isEmpty()) {
             try {
                 String fileName = StringUtils.cleanPath(imagenFile.getOriginalFilename());
                 String uploadDir = "C:\\dev\\Proyecto_v1\\Proyecto_DesarolloWeb";
                 Path uploadPath = Paths.get(uploadDir);
-                
+
                 if (!Files.exists(uploadPath)) {
                     Files.createDirectories(uploadPath);
                 }
@@ -87,40 +88,37 @@ public class RegistroServiceImpl implements RegistroService {
     }
 
     @Override
-    public Model crearUsuario(Model model, Usuario usuario) 
-            throws MessagingException {
+    public Model crearUsuario(Model model, Usuario usuario) {
         String mensaje;
-        if (!usuarioService.
-                existeUsuarioPorUsernameOCorreo(
-                        usuario.getUsername(), 
-                        usuario.getCorreo())) {
+        if (!usuarioService.existeUsuarioPorUsernameOCorreo(usuario.getUsername(), usuario.getCorreo())) {
             String clave = demeClave();
             usuario.setPassword(clave);
-            usuario.setActivo(false);
+            usuario.setActivo(true);  // Cambia esto a true para que el usuario esté activo inmediatamente
             usuarioService.save(usuario, true);
-            enviaCorreoActivar(usuario, clave);
+            // No es necesario enviar un correo de activación, así que puedes comentar la siguiente línea
+            // enviaCorreoActivar(usuario, clave);
             mensaje = String.format(
                     messageSource.getMessage(
-                            "registro.mensaje.activacion.ok", 
-                            null, 
+                            "registro.mensaje.activacion.ok",
+                            null,
                             Locale.getDefault()),
                     usuario.getCorreo());
         } else {
             mensaje = String.format(
                     messageSource.getMessage(
-                            "registro.mensaje.usuario.o.correo", 
-                            null, 
+                            "registro.mensaje.usuario.o.correo",
+                            null,
                             Locale.getDefault()),
                     usuario.getUsername(), usuario.getCorreo());
         }
         model.addAttribute(
-                "titulo", 
+                "titulo",
                 messageSource.getMessage(
-                        "registro.activar", 
-                        null, 
+                        "registro.activar",
+                        null,
                         Locale.getDefault()));
         model.addAttribute(
-                "mensaje", 
+                "mensaje",
                 mensaje);
         return model;
     }

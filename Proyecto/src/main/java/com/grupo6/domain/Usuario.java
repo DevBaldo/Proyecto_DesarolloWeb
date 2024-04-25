@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
     private String telefono;
     @Column (name = "ruta_imagen")
     private String rutaImagen;    
-    private boolean activo;
+    private boolean activo = true;
     
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_usuario")
