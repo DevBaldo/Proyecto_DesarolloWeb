@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -87,16 +88,18 @@ public class RegistroServiceImpl implements RegistroService {
         usuarioService.save(usuario, true);
     }
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
-    public Model crearUsuario(Model model, Usuario usuario) {
+    public Model crearUsuario(Model model, Usuario usuario, String password) {
         String mensaje;
         if (!usuarioService.existeUsuarioPorUsernameOCorreo(usuario.getUsername(), usuario.getCorreo())) {
-            String clave = demeClave();
-            usuario.setPassword(clave);
-            usuario.setActivo(true);  // Cambia esto a true para que el usuario esté activo inmediatamente
+            // Encripta la contraseña proporcionada por el usuario antes de guardarla
+            String encryptedPassword = passwordEncoder.encode(password);
+            usuario.setPassword(encryptedPassword);
+            usuario.setActivo(true);  // El usuario está activo inmediatamente
             usuarioService.save(usuario, true);
-            // No es necesario enviar un correo de activación, así que puedes comentar la siguiente línea
-            // enviaCorreoActivar(usuario, clave);
             mensaje = String.format(
                     messageSource.getMessage(
                             "registro.mensaje.activacion.ok",
